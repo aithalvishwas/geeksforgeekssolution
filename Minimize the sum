@@ -1,0 +1,19 @@
+class Solution {
+    long minimizeSum(int N, int arr[]) {
+        // code here
+        Arrays.sort(arr);
+        PriorityQueue<Long> queue = new PriorityQueue();
+        for(long x :arr){
+            queue.add(x);
+        }
+        long ans = 0;
+        while(queue.size()>1){
+            long a = queue.poll();
+            long b = queue.poll();
+            long sum = a+b;
+            queue.add(sum);
+            ans +=sum;
+        }
+        return ans;
+    }
+}
