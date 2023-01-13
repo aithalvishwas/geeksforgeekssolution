@@ -1,0 +1,41 @@
+
+class Solution {
+
+    public long luckyPermutations(int N, int M, int[] arr, int[][] graph) {
+        long[][] dp = new long[N][1<<N];
+        for(int i = 0; i < N; i++) {
+            dp[i][1<<i] = 1;
+        }
+        int[][] adj = new int[N][N];
+        for(int[] x : graph) {
+            adj[x[0]-1][x[1]-1] = 1;
+            adj[x[1]-1][x[0]-1] = 1;
+        }
+        
+        for(int mask = 1; mask < (1<<N); mask++) {
+            for(int i = 0; i < N; i++) {
+                for(int j = 0; j < N; j++) {
+                    if(j != i){
+                       if(arr[j] != arr[i]) {
+                           if(checkBit(mask, j) ){
+                               if(adj[arr[i]-1][arr[j]-1]==1){
+                                   dp[i][mask] += dp[j][mask ^ (1<<i)];
+                               }
+                           }
+                       }
+                    }   
+                }
+            }
+        }
+        
+        long ans = 0;
+        
+        for(int i = 0; i < N; i++) {
+            ans += dp[i][(1<<N)-1];
+        } 
+        return ans;
+    }
+    public boolean checkBit(int N, int i) {
+        return (N & (1<<i)) != 0;
+    }
+}
