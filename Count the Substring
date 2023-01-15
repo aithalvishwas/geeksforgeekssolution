@@ -1,0 +1,39 @@
+
+
+//User function Template for Java
+
+class Solution {
+    long countSubstring(String S){
+       int n = S.length();
+       long ans = 0;
+       int track =0;
+       int zero = n;
+       int [] k = new int [2*n+3];
+       int cur = n;
+       for(int i=0;i<n;i++){
+           if(S.charAt(i)=='0'){
+               cur--;
+           }else{
+               cur++;
+           }
+           if(cur<=zero){
+               track++;
+           }
+           k[cur]++;
+       }
+       for(int i=0;i<n;i++){
+           ans += (long)(n-i-track);
+           if(S.charAt(i)=='1'){
+               k[zero+1]--;
+               zero++;
+               track+= k[zero];
+           }else{
+               k[zero-1]--;
+               zero--;
+               track--;
+               track-=k[zero+1];
+           }
+       }
+       return ans;
+    }
+}
