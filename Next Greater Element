@@ -1,0 +1,16 @@
+class Solution{
+    public static long[] nextLargerElement(long[] arr, int n) { 
+        // Your code here
+        Stack <Long> stack = new Stack<>();
+        long [] ans = new long[n];
+        stack.push((long)-1);
+        for(int i=n-1;i>=0;i--){
+            while(stack.size()!=1 && stack.peek()<=arr[i]){
+                stack.pop();
+            }
+            ans[i] = stack.peek();
+            stack.push(arr[i]);
+        }
+        return ans;
+    } 
+}
