@@ -1,0 +1,19 @@
+class Solution {
+    public static int minVal(int a, int b) {
+        // code here
+        int x = Integer.bitCount(a);
+        int y = Integer.bitCount(b);
+        if(x==y){
+            return a;
+        }
+        while(x>y){
+            a = a & (a-1);
+            x--;
+        }
+        while(y>x){
+            a = a |(a+1);
+            y--;
+        }
+        return a;
+    }
+}
