@@ -1,0 +1,22 @@
+
+class Solution {
+    static int count;
+    int minOperation(String s) {
+        // code here
+        count=0;
+        isequal(s);
+        return count;
+    }
+    
+    public static void isequal(String s){
+        if(s.length()==0)
+            return;
+        if(s.substring(0,s.length()/2).equals(s.substring(s.length()/2))){
+            count+= s.length()/2 +1;
+            return ;
+        }else{
+            count+=1;
+            isequal(s.substring(0,s.length()-1));
+        }
+    }
+}
