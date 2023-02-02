@@ -1,0 +1,34 @@
+
+
+//User function Template for Java
+
+class Solution{
+     long  ans=-1;
+    public void dfs(int edge[],long store[],long vis[],long reSet[],int u,long sum){
+      if(u!=-1){
+          if(vis[u]==0){
+              store[u]=sum;
+              vis[u]=1;
+              reSet[u]=1;
+              sum+=u;
+             dfs(edge,store,vis,reSet,edge[u],sum);
+          }
+          else if(reSet[u]==1){
+              ans=Math.max(ans,sum-store[u]);
+          }
+            reSet[u]=0;
+      }
+    
+  }
+    public long largesSumCycle(int N, int Edge[]){
+         long[]  store=new long[N];
+         long[]  vis=new long[N];
+         long [] reSet=new long[N];
+         for(int i=0;i<N;i++){
+         if(vis[i]==0){
+            dfs(Edge,store,vis,reSet,i,0);
+         }
+    }
+    return ans;
+    }
+}
