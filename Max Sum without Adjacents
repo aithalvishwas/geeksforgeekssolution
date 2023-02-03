@@ -1,0 +1,89 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Refresh
+
+Time (IST)	Status	Lang	Test Cases	Code
+2023-02-04 01:04:19	Correct	java	170 / 170	View
+2023-02-04 00:45:03	Correct	java	170 / 170	View
+Output Window
+Suggest Feedback
+
+Problem Solved Successfully
+You get marks only for the first correct submission if you solve the problem without viewing the full solution.
+Test Cases Passed: 
+170 /170
+Your Total Score: 
+155
+Total Time Taken: 
+0.58
+Correct Submission Count: 
+2
+Attempts No.: 
+2
+Java (1.8)
+
+
+
+        for(int i=1;i<n;i++){
+
+
+
+Custom Input
+
+
+//User function Template for Java
+
+class Solution {
+    int findMaxSum(int arr[], int n) {
+        // code here
+        int first  = arr[0];
+        int sum = 0;
+        for(int i=1;i<n;i++){
+            int k = sum+arr[i];
+            int nsum = Math.max(sum,first);
+            first = k;
+            sum =nsum;
+        }
+        return Math.max(sum,first);
+    }
+}
