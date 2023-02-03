@@ -1,0 +1,28 @@
+
+class Solution{
+    static int [] endPoints(int [][]m, int R, int C){
+        //code here
+        int i = 0;
+        int j = 0;
+        int ans []= new int[2];
+        char pos = 'r';
+        while(i<R && j<C && i>=0 && j>=0){
+            ans[0]=i;
+            ans[1]=j;
+            if(m[i][j]==0){
+                if(pos=='r')j++;
+                else if(pos=='d')i++;
+                else if(pos=='l')j--;
+                else if(pos=='u')i--;
+            }
+            else if(m[i][j]==1){
+                m[i][j]=0;
+                if(pos=='r')pos='d';
+                else if(pos=='d')pos='l';
+                else if(pos=='l')pos='u';
+                else if(pos=='u')pos='r';
+            }
+        }
+        return ans;
+    }
+}
