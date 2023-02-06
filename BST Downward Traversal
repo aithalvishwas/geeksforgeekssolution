@@ -1,0 +1,38 @@
+
+class Solution{
+    long ans;
+    long verticallyDownBST(Node root,int target){
+        Node curr = root;
+        while(curr!=null){
+            if(curr.data==target){
+                break;
+            }
+            if(curr.data>target){
+                curr = curr.left;
+            }else{
+                curr = curr.right;
+            }
+        }
+        if(curr!=null){
+            ans = 0;
+            int pos = 0;
+            Node check =curr;
+            find(curr,check,pos);
+            return ans;
+        }
+        else{
+            return -1;
+        }
+    }
+    void find(Node root,Node check, int pos){
+        if(root==null){
+            return;
+        }
+        find(root.left,check,pos-1);
+        find(root.right,check,pos+1);
+        if(pos==0 && root!=check){
+            ans+=root.data;
+        }
+  
+    }
+}
