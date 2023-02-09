@@ -1,0 +1,19 @@
+// User function Template for Java
+
+class Solution {
+    public int maxInstance(String s) {
+        // Code here
+        int arr[] = new int[26];
+        for(int i=0;i<s.length();i++){
+            arr[s.charAt(i)-'a']++;
+        }
+        arr['l'-'a'] = arr['l'-'a']/2;
+        arr['o'-'a'] = arr['o'-'a']/2;
+        int min = 1000000;
+        String name = "balloon";
+        for(int i=0;i<name.length();i++){
+            min = Math.min(min,arr[name.charAt(i)-'a']);
+        }
+        return min;
+    }
+}
