@@ -1,0 +1,28 @@
+
+class Solution{
+    public static int appleSequence(int n, int m, String arr){
+        //code here
+        int i = 0;
+        int j = 0;
+        int orange = 0;
+        int ans = 0;
+        while(j<n){
+            if(arr.charAt(j)=='O'){
+                if(orange<m){
+                    orange++;
+                    j++;
+                }else{
+                    if(arr.charAt(i)=='O'){
+                        orange--;
+                    }
+                    i++;
+                }
+                
+            }else{
+                j++;
+            }
+            ans = Math.max(ans,j-i);
+        }
+        return ans;
+    }
+}
